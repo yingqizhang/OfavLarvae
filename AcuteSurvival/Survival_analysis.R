@@ -18,7 +18,7 @@ library(survminer)
 #install.packages("coxme")
 library(coxme)
 
-source('~/Dropbox/PoritesSpawnYingqi/summarySE.R')
+source('~/summarySE.R')
 
 
 ################### Kaplan-Meier survival curves
@@ -142,10 +142,10 @@ sr=exp(ranef(mAll)[[1]])
 sr=stack(sr)
 names(sr)=c("HR","ID")
 
-survival=read.csv("~/Dropbox/NOAA_Manzello_Ofav/Acute_stress/Survival_2019.csv")
+survival=read.csv("~/Survival_2019.csv")
 info=survival[,c(1:4)]
 
 sr=merge(sr,info,by="ID")
 
-setwd("~/Dropbox/NOAA_Manzello_Ofav/Acute_stress")
+setwd("~/Acute_stress")
 write.table(x=sr, file='Hazard_ratio.csv', append=FALSE,  quote=FALSE, row.names=FALSE, col.names=TRUE, sep=',')
